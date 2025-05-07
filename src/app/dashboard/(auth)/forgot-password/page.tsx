@@ -1,12 +1,12 @@
 import Link from "next/link"
-import type { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Forgot Password | S.E.C.U.R.E Chain",
-  description: "Reset your S.E.C.U.R.E Chain password",
+  title: "Forgot Password | SECURE Chain",
+  description: "Reset your SECURE Chain password",
 }
 
 export default function ForgotPasswordPage() {

@@ -14,10 +14,9 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
                 <Shield className="h-6 w-6" />
                 {/* <span className="inline-block font-bold">SECURE Chain</span> */}
               </Link>
-              /
             </div>
-            <ThemeToggle />
             <div className="ml-auto">
+            <ThemeToggle />
             </div>
         </header>
         <main className="flex-1">
