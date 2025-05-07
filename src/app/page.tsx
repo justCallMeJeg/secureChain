@@ -12,7 +12,7 @@ export default function LandingPage() {
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mr-auto ml-auto pr-16 pl-16 flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
           <div className="flex gap-6 md:gap-10">
-            <Link href="/" className="flex items-center space-x-2">
+            <Link href="/#hero" className="flex items-center space-x-2">
               <Shield className="h-6 w-6" />
               <span className="inline-block font-bold">SECURE Chain</span>
             </Link>
@@ -60,7 +60,7 @@ export default function LandingPage() {
         </div>
       </header>
       <main className="flex-1">
-        <section className="relative space-y-6 overflow-hidden pb-8 pt-10 md:pb-12 md:pt-16 lg:py-32 min-h-screen flex items-center">
+        <section id="#hero" className="relative space-y-6 overflow-hidden pb-8 pt-10 md:pb-12 md:pt-16 lg:py-32 min-h-screen flex items-center">
           <AnimatedBackground />
           <div className="container mr-auto ml-auto pr-16 pl-16 flex max-w-[64rem] flex-col items-center gap-4 text-center">
             <div className="rounded-full bg-muted px-4 py-1.5 text-sm font-medium">
