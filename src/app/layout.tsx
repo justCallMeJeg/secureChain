@@ -7,7 +7,7 @@ import { Metadata } from "next";
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "S.E.C.U.R.E Chain - Blockchain-Powered Election Platform",
+  title: "SECURE Chain - Blockchain-Powered Election Platform",
   description:
     "Conduct transparent, secure, and tamper-proof elections for your educational institution with our blockchain-based voting system.",
 }
@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
