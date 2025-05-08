@@ -5,6 +5,10 @@ export const metadata: Metadata = {
     description: "Manage your election campaigns",
 }
 
-export default function DashboardLayout() {
-
+export default function AdminDashboardPage() {
+    return (
+        <div>
+            <p>This is the admin dashboard page</p>
+        </div>
+    )
 }
