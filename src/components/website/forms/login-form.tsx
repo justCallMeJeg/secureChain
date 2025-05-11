@@ -1,21 +1,70 @@
 "use client"
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Eye, EyeOff } from "lucide-react"
 import Link from "next/link"
-import { useState } from "react"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import { useForm } from "react-hook-form"
+import { toast } from "sonner"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
+
+const formSchema = z.object({
+  email: z
+    .string().email("Invalid email address"),
+  password: z
+    .string()
+    .min(1, {
+      message: "Password must not be empty.",
+    })
+})
 
 export default function LoginForm() {
-    const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const [loading, setLoading] = useState(false) // Add loading state
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  })
 
-    return(
-        <form>
-            <div className="grid gap-4">
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    // TO DO: Handle sign in logic here
+
+    // Temporary logic demonstration (update in production)
+    setLoading(true)
+    await new Promise((resolve) => setTimeout(resolve, 2000)) // Simulate async logic
+    setLoading(false)
+    console.log(values)
+
+    toast("You submitted the following values:", {
+      description: JSON.stringify(values, null, 2),
+    })
+  }
+
+  return (
+    <Form {...form}>
+      <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
                 <Input
+                  {...field}
                   id="email"
                   placeholder="name@example.com"
                   type="email"
@@ -23,19 +72,33 @@ export default function LoginForm() {
                   autoComplete="email"
                   autoCorrect="off"
                 />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <div className="flex items-center justify-between">
+                <FormLabel>Password</FormLabel>
+                <Link
+                  href="/dashboard/forgot-password"
+                  className="text-sm font-medium text-primary underline-offset-4 hover:underline"
+                >
+                  Forgot password?
+                </Link>
               </div>
-              <div className="grid gap-2">
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="password">Password</Label>
-                  <Link
-                    href="/dashboard/forgot-password"
-                    className="text-sm font-medium text-primary underline-offset-4 hover:underline"
-                  >
-                    Forgot password?
-                  </Link>
-                </div>
+              <FormControl>
                 <div className="relative">
-                  <Input id="password" type={showPassword ? "text" : "password"} autoComplete="current-password" />
+                  <Input
+                    {...field}
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    autoComplete="current-password"
+                  />
                   <Button
                     type="button"
                     variant="ghost"
@@ -43,6 +106,7 @@ export default function LoginForm() {
                     className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
                     onClick={() => setShowPassword(!showPassword)}
                     aria-label={showPassword ? "Hide password" : "Show password"}
+                    tabIndex={-1}
                   >
                     {showPassword ? (
                       <EyeOff className="h-4 w-4 text-muted-foreground" />
@@ -51,11 +115,15 @@ export default function LoginForm() {
                     )}
                   </Button>
                 </div>
-              </div>
-              <Button type="submit" className="w-full">
-                Sign In
-              </Button>
-            </div>
-          </form>
-    )
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit" className="w-full" disabled={loading}>
+          {loading ? "Signing In..." : "Sign In"}
+        </Button>
+      </form>
+    </Form>
+  )
 }
