@@ -1,8 +1,6 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Metadata } from "next"
+import ForgotPasswordForm from "@/components/website/forms/forgotpass-form"
 
 export const metadata: Metadata = {
   title: "Forgot Password | SECURE Chain",
@@ -18,24 +16,7 @@ export default function ForgotPasswordPage() {
           <p className="text-sm text-muted-foreground">Enter your email address and we&#39;ll send you a link.</p>
         </div>
         <div className="grid gap-6">
-          <form>
-            <div className="grid gap-4">
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  placeholder="name@example.com"
-                  type="email"
-                  autoCapitalize="none"
-                  autoComplete="email"
-                  autoCorrect="off"
-                />
-              </div>
-              <Button type="submit" className="w-full">
-                Send Reset Link
-              </Button>
-            </div>
-          </form>
+          <ForgotPasswordForm />
         </div>
         <p className="px-8 text-center text-sm text-muted-foreground">
           Remember your password?{" "}

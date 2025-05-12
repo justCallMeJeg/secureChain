@@ -140,8 +140,14 @@ export default function SignUpForm() {
                       id="password"
                       type={showPassword ? "text" : "password"}
                       autoComplete="new-password"
-                      onFocus={() => setIsPasswordFocused(true)}
-                      onBlur={() => setIsPasswordFocused(false)}
+                      onFocus={async () => {
+                        await new Promise((resolve) => setTimeout(resolve, 100))
+                        setIsPasswordFocused(true)
+                      }}
+                      onBlur={async () => {
+                        await new Promise((resolve) => setTimeout(resolve, 100))
+                        setIsPasswordFocused(false)
+                      }}
                     />
                     <Button
                       type="button"

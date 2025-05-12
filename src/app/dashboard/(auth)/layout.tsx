@@ -3,8 +3,9 @@ import Link from "next/link"
 import { Shield } from "lucide-react"
 import { ThemeToggle } from "@/components/website/theme-toggle"
 import { AnimatedBackground } from "@/components/website/animated-background"
+import { Toaster } from "sonner"
 
-export default function AuthLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col">
         <AnimatedBackground />
@@ -24,6 +25,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
             <div className="container max-w-md">{children}</div>
             </div>
         </main>
+        <Toaster/>
     </div>
   )
 }

@@ -27,7 +27,7 @@ export default function LoginPage() {
               <span className="bg-background px-2 text-muted-foreground">or continue with</span>
             </div>
           </div>
-          <Button variant="outline" type="button" className="w-full">
+          <Button variant="outline" type="button" className="w-full" disabled={true}>
               <GoogleIconColored className="mr-2 h-4 w-4"/>
               Google
           </Button>
