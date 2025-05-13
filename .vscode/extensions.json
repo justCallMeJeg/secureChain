@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "ms-vscode.vscode-typescript-next",
+    "bradlc.vscode-tailwindcss",
+    "cipchk.cssrem",
+    "PKief.material-icon-theme",
+    "GitHub.copilot",
+    "GitHub.copilot-chat",
+    "dsznajder.es7-react-js-snippets",
+    "denoland.vscode-deno"
+  ]
+}
